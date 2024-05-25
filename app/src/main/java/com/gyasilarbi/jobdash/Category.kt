@@ -5,11 +5,13 @@ import android.os.Parcelable
 
 data class Category(
     val name: String?,
+    val owner: String?,
     val logoResourceId: Int,
     val description: String?,
     val price: String?,
 ) : Parcelable{
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
         parcel.readString(),
         parcel.readInt(),
         parcel.readString(),
@@ -19,6 +21,7 @@ data class Category(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
+        parcel.writeString(owner)
         parcel.writeInt(logoResourceId)
         parcel.writeString(description)
         parcel.writeString(price)
@@ -40,19 +43,28 @@ data class Category(
 }
 
 val getCategory = listOf(
-    Category("Carpenter", R.drawable.cat1, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Electrician", R.drawable.cat2, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Plumber", R.drawable.cat3, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Carpenter", R.drawable.cat1, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Electrician", R.drawable.cat2, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Plumber", R.drawable.cat3, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Carpenter", R.drawable.cat1, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Electrician", R.drawable.cat2, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Plumber", R.drawable.cat3, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Carpenter", R.drawable.cat1, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Electrician", R.drawable.cat2, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Plumber", R.drawable.cat3, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Carpenter", R.drawable.cat1, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Electrician", R.drawable.cat2, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-    Category("Plumber", R.drawable.cat3, "The Electrician position involves installing, maintaining, and repairing electrical systems and equipment in various settings.", "$20.00"),
-)
+    Category("Barber","GyasiLarbi", R.drawable.barber, "4.5", "$20.00"),
+    Category("Gardener","GyasiLarbi", R.drawable.garderner, "4.5", "$23.00"),
+    Category("Plumber","GyasiLarbi", R.drawable.plumber, "3.9", "$20.16"),
+    Category("Barber","GyasiLarbi", R.drawable.barber, "4.5", "$20.00"),
+    Category("Gardener","GyasiLarbi", R.drawable.garderner, "4.5", "$23.00"),
+    Category("Plumber","GyasiLarbi", R.drawable.plumber, "3.9", "$20.16"),
+    Category("Barber","GyasiLarbi", R.drawable.barber, "4.5", "$20.00"),
+    Category("Gardener","GyasiLarbi", R.drawable.garderner, "4.5", "$23.00"),
+    Category("Plumber","GyasiLarbi", R.drawable.plumber, "3.9", "$20.16"),
+    Category("Barber","GyasiLarbi", R.drawable.barber, "4.5", "$20.00"),
+    Category("Gardener","GyasiLarbi", R.drawable.garderner, "4.5", "$23.00"),
+    Category("Plumber","GyasiLarbi", R.drawable.plumber, "3.9", "$20.16"),
+    Category("Barber","GyasiLarbi", R.drawable.barber, "4.5", "$20.00"),
+    Category("Gardener","GyasiLarbi", R.drawable.garderner, "4.5", "$23.00"),
+    Category("Plumber","GyasiLarbi", R.drawable.plumber, "3.9", "$20.16"),
+    Category("Barber","GyasiLarbi", R.drawable.barber, "4.5", "$20.00"),
+    Category("Gardener","GyasiLarbi", R.drawable.garderner, "4.5", "$23.00"),
+    Category("Plumber","GyasiLarbi", R.drawable.plumber, "3.9", "$20.16"),
+    Category("Barber","GyasiLarbi", R.drawable.barber, "4.5", "$20.00"),
+    Category("Gardener","GyasiLarbi", R.drawable.garderner, "4.5", "$23.00"),
+    Category("Plumber","GyasiLarbi", R.drawable.plumber, "3.9", "$20.16"),
+    Category("Barber","GyasiLarbi", R.drawable.barber, "4.5", "$20.00"),
+    Category("Gardener","GyasiLarbi", R.drawable.garderner, "4.5", "$23.00"),
+    Category("Plumber","GyasiLarbi", R.drawable.plumber, "3.9", "$20.16"),
+    )

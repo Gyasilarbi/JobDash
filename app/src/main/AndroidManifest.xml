@@ -13,22 +13,16 @@
         android:theme="@style/Theme.JobDash"
         tools:targetApi="31">
         <activity
-            android:name=".HomeActivity"
+            android:name=".ItemDetail"
             android:exported="false" />
         <activity
-            android:name=".ForgetPasswordActivity"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
-            android:exported="false" />
-        <activity
             android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ChooseRoleActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

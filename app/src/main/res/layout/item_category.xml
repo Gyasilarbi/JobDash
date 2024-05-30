@@ -2,114 +2,143 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="250dp"
-    android:layout_height="250dp"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
     android:layout_margin="8dp"
-    app:cardCornerRadius="20dp">
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-        <!-- Main ImageView at the top of the CardView -->
-        <ImageView
-            android:id="@+id/categoryLogo"
-            android:layout_width="250dp"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/barber"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2">
 
-        <!-- ConstraintLayout at the bottom for owner info, price, and rating -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/contraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="150dp"
+                android:layout_height="match_parent">
 
-            <!-- Owner icon ImageView -->
-            <ImageView
-                android:id="@+id/imageView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/baseline_person_24"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/categoryLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/barber" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
-            <!-- Owner name TextView -->
-            <TextView
-                android:id="@+id/categoryOwner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="4dp"
-                android:text="Textview"
-                app:layout_constraintBottom_toBottomOf="@id/imageView15"
-                app:layout_constraintStart_toEndOf="@id/imageView15" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:orientation="vertical"
+            android:padding="14dp">
 
-            <!-- Price TextView -->
-            <TextView
-                android:id="@+id/categoryPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12$"
-                android:textStyle="bold"
-                android:textColor="@color/app_theme_darkAlt"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@id/imageView15" />
-
-            <!-- Rating TextView -->
-            <TextView
-                android:id="@+id/starText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="4.5"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/categoryPrice"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/categoryPrice" />
-
-            <!-- Star icon ImageView -->
-            <ImageView
-                android:id="@+id/star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:src="@drawable/baseline_star_24"
-                app:layout_constraintBottom_toBottomOf="@id/starText"
-                app:layout_constraintEnd_toStartOf="@id/starText"
-                app:layout_constraintTop_toTopOf="@id/starText" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- ConstraintLayout for the title with semi-transparent background -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="#70000000"
-            app:layout_constraintBottom_toTopOf="@id/contraintLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <!-- Title TextView -->
             <TextView
                 android:id="@+id/categoryName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:text="Barber"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_person_24" />
+
+                <TextView
+                    android:id="@+id/categoryOwner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gyasilarbi"
+                    android:layout_marginStart="5dp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="@id/imageView15"
+                    app:layout_constraintStart_toEndOf="@id/imageView15" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Price TextView -->
+                <TextView
+                    android:id="@+id/categoryPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GH₵12"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/app_theme_darkAlt"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <!-- Rating TextView -->
+                <TextView
+                    android:id="@+id/starText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="4.5"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/categoryPrice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/categoryPrice" />
+
+                <!-- Star icon ImageView -->
+                <ImageView
+                    android:id="@+id/star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:src="@drawable/baseline_star_24"
+                    app:layout_constraintBottom_toBottomOf="@id/starText"
+                    app:layout_constraintEnd_toStartOf="@id/starText"
+                    app:layout_constraintTop_toTopOf="@id/starText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status:"/>
+
+                <ImageView
+                    android:id="@+id/imageView16"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/baseline_circle_24"
+                    app:layout_constraintBottom_toBottomOf="@id/status"
+                    app:layout_constraintStart_toEndOf="@id/status"/>
+
+                <TextView
+                    android:id="@+id/statusAns"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="Available"
+                    app:layout_constraintStart_toEndOf="@id/imageView16"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
 </androidx.cardview.widget.CardView>

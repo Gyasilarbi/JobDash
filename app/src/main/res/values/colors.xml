@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#D1AF07</color>
 
     <color name="app_theme_primary">#0078d4</color>
     <color name="app_theme_secondary">#2b88d8</color>

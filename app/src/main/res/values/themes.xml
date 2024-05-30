@@ -42,5 +42,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="roundedImageView" parent="Widget.MaterialComponents.ShapeableImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
 
 </resources>

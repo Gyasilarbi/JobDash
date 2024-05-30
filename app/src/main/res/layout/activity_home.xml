@@ -8,11 +8,31 @@
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/back_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/back_button_image"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/header"
+            android:padding="5dp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -549,6 +569,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/home"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
@@ -650,6 +671,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/account"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
@@ -671,7 +693,6 @@
                         android:layout_gravity="center"
                         android:text="Account"
                         android:textStyle="bold" />
-
                 </LinearLayout>
 
             </LinearLayout>

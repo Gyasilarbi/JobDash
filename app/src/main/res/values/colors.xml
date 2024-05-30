@@ -14,4 +14,6 @@
     <color name="app_theme_dark">#005a9e</color>
     <color name="app_theme_darker">#004578</color>
     <color name="card_view">#EFECEC</color>
+
+    <color name="app_theme_background">#DEECF6</color>
 </resources>

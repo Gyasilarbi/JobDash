@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:text="Let's get started"
             android:textSize="20dp"
-            android:layout_gravity="end"/>
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 

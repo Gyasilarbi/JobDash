@@ -34,12 +34,16 @@ class HomeActivity : AppCompatActivity() {
             startActivity(go)
         }
 
+        val chats = findViewById<LinearLayout>(R.id.chat)
+        chats.setOnClickListener {
+            val go = Intent (this, ChatActivity::class.java)
+            startActivity(go)
+        }
+
         val account = findViewById<LinearLayout>(R.id.account)
         account.setOnClickListener {
-            val go = Intent (this, Account::class.java)
+            val go = Intent (this, Profile::class.java)
             startActivity(go)
         }
     }
-
-
 }

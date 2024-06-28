@@ -38,13 +38,18 @@
     </style>
 
     <style name="nav_item" parent="Base.Theme.JobDash">
-        <item name="android:textColor">@color/app_theme_darker</item>
+        <item name="android:textColor">@color/app_theme_secondary</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="roundedImageView" parent="Widget.MaterialComponents.ShapeableImageView">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="roundedImageView2" parent="Widget.MaterialComponents.ShapeableImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">60dp</item>
     </style>
 
 

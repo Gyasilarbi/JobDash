@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="@color/app_theme_primary">
+    android:background="@color/app_theme_primary"
+    tools:context=".LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,9 +23,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="-20dp"
         app:cardCornerRadius="25dp"
-        android:layout_marginBottom="-20dp">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,20 +37,21 @@
                 style="@style/register_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hi, Welcome Back! 👋"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:text="Hi, Welcome Back! 👋" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please enter your email and password"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:text="Please enter your email and password" />
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"/>
+                android:layout_height="30dp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtEmail"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,14 +61,16 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtPassword"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,48 +87,50 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <CheckBox
+                    android:id="@+id/rememberMeCheckbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Save login Info for later."
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:text="Save login Info for later." />
 
                 <TextView
+                    android:id="@+id/forgotPasswordButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Forgot password?"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
+                    android:text="Forgot password?"
                     android:textColor="@color/app_theme_secondary"
-                    android:textStyle="italic|bold"/>
+                    android:textStyle="italic|bold" />
             </RelativeLayout>
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="10dp"/>
+                android:layout_height="10dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="Login"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="190dp"/>
+                android:layout_height="190dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="center"
+                android:orientation="horizontal"
                 android:padding="20dp">
 
                 <TextView

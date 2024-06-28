@@ -222,12 +222,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="See All"
-                    android:textColor="@color/app_theme_tertiary"
-                    android:textStyle="bold|italic" />
             </LinearLayout>
 
             <HorizontalScrollView
@@ -514,12 +508,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="See All"
-                    android:textColor="@color/app_theme_tertiary"
-                    android:textStyle="bold|italic" />
             </LinearLayout>
 
             <TextView
@@ -532,7 +520,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="900dp"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -551,7 +539,7 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -573,98 +561,100 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/hover_background">
 
                     <ImageView
                         android:id="@+id/imageView10"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/baseline_home_24"
-                        app:tint="@color/app_theme_darker" />
+                        android:src="@drawable/home"
+                        app:tint="@color/app_theme_secondary" />
 
                     <TextView
                         android:id="@+id/textView5"
                         style="@style/nav_item"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:text="Home"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/requests"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/hover_background">
 
                     <ImageView
                         android:id="@+id/imageView11"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/orders24"
-                        app:tint="@color/app_theme_darker" />
+                        android:src="@drawable/baseline_bookmark_border_24"
+                        app:tint="@color/app_theme_secondary" />
 
                     <TextView
                         android:id="@+id/textView6"
                         style="@style/nav_item"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:text="Requests"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/add"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/hover_background">
 
                     <ImageView
                         android:id="@+id/imageView12"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/baseline_add_box_24"
-                        app:tint="@color/app_theme_darker" />
+                        android:src="@drawable/add"
+                        app:tint="@color/app_theme_secondary" />
 
                     <TextView
                         android:id="@+id/textView7"
                         style="@style/nav_item"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:text="Add"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
-
                 <LinearLayout
+                    android:id="@+id/chat"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/hover_background">
 
                     <ImageView
                         android:id="@+id/imageView13"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/baseline_chat_24"
-                        app:tint="@color/app_theme_darker" />
+                        android:src="@drawable/chat"
+                        app:tint="@color/app_theme_secondary" />
 
                     <TextView
                         android:id="@+id/textView8"
                         style="@style/nav_item"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:text="Chat"
                         android:textStyle="bold" />
 
@@ -675,22 +665,22 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/hover_background">
 
                     <ImageView
                         android:id="@+id/imageView14"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/baseline_person_24"
-                        app:tint="@color/app_theme_darker" />
+                        android:src="@drawable/person"
+                        app:tint="@color/app_theme_secondary" />
 
                     <TextView
                         android:id="@+id/textView9"
                         style="@style/nav_item"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:text="Account"
                         android:textStyle="bold" />
                 </LinearLayout>

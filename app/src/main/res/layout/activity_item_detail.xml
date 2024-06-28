@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ItemDetail">
 
+
     <LinearLayout
         android:id="@+id/back_button"
         android:layout_width="0dp"
@@ -22,6 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_arrow_back_ios_new_24"
+            android:padding="5dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/header"
             android:padding="5dp"/>
     </LinearLayout>
 
@@ -79,16 +86,68 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/categoryPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="GH₵12"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/app_theme_darkAlt"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_person_24" />
+
+                    <TextView
+                        android:id="@+id/categoryOwner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gyasilarbi"
+                        android:layout_marginStart="5dp"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toBottomOf="@id/imageView15"
+                        app:layout_constraintStart_toEndOf="@id/imageView15" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/categoryPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GH₵12"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/app_theme_darkAlt"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"/>
+
+                    <TextView
+                        android:id="@+id/starText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="4.5"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/categoryPrice"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/categoryPrice" />
+
+                    <!-- Star icon ImageView -->
+                    <ImageView
+                        android:id="@+id/star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="2dp"
+                        android:src="@drawable/baseline_star_24"
+                        app:layout_constraintBottom_toBottomOf="@id/starText"
+                        app:layout_constraintEnd_toStartOf="@id/starText"
+                        app:layout_constraintTop_toTopOf="@id/starText" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"

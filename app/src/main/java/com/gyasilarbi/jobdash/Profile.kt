@@ -60,6 +60,12 @@ class Profile : AppCompatActivity() {
             startActivity(go)
         }
 
+        val requests = binding.requests
+        requests.setOnClickListener {
+            val go = Intent (this, RequestsActivity::class.java)
+            startActivity(go)
+        }
+
         // Handle the account button click
         val account = binding.account
         account.setOnClickListener {

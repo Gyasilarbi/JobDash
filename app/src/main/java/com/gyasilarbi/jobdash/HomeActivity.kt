@@ -34,6 +34,12 @@ class HomeActivity : AppCompatActivity() {
             startActivity(go)
         }
 
+        val requests = findViewById<LinearLayout>(R.id.requests)
+        requests.setOnClickListener {
+            val go = Intent (this, RequestsActivity::class.java)
+            startActivity(go)
+        }
+
         val chats = findViewById<LinearLayout>(R.id.chat)
         chats.setOnClickListener {
             val go = Intent (this, ChatActivity::class.java)

@@ -5,6 +5,8 @@
     <color name="yellow">#D1AF07</color>
     <color name="gray">#808080</color>
     <color name="hover_color">#E0E0E0</color>
+    <color name="orange">#FF5722</color>
+
 
     <color name="app_theme_primary">#0078d4</color>
     <color name="app_theme_secondary">#2b88d8</color>

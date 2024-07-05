@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "364058512872",
+    "project_id": "jobdash-7ecd6",
+    "storage_bucket": "jobdash-7ecd6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364058512872:android:31ae56f33d2993db33285d",
+        "android_client_info": {
+          "package_name": "com.gyasilarbi.jobdash"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTbYlmjCUe5zRTTxXFvvF1CL4gm5wmXzY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

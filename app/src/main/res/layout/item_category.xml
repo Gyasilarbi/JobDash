@@ -83,28 +83,28 @@
                     android:textColor="@color/app_theme_darkAlt"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
-                <!-- Rating TextView -->
-                <TextView
-                    android:id="@+id/starText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:text="4.5"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@id/categoryPrice"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/categoryPrice" />
+<!--                &lt;!&ndash; Rating TextView &ndash;&gt;-->
+<!--                <TextView-->
+<!--                    android:id="@+id/starText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="16dp"-->
+<!--                    android:text="4.5"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/categoryPrice"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/categoryPrice" />-->
 
                 <!-- Star icon ImageView -->
-                <ImageView
-                    android:id="@+id/star"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="2dp"
-                    android:src="@drawable/baseline_star_24"
-                    app:layout_constraintBottom_toBottomOf="@id/starText"
-                    app:layout_constraintEnd_toStartOf="@id/starText"
-                    app:layout_constraintTop_toTopOf="@id/starText" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/star"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="2dp"-->
+<!--                    android:src="@drawable/baseline_star_24"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/starText"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/starText"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/starText" />-->
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

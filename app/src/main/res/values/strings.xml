@@ -3,4 +3,10 @@
     <string name="app_name">JobDash</string>
 
     <string name="City">Select City</string>
+
+    <string name="JobDash">JobDash</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

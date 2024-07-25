@@ -2,9 +2,8 @@ package com.gyasilarbi.jobdash
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.gyasilarbi.jobdash.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -18,38 +17,43 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        categoryAdapter = CategoryAdapter(getCategory, {})
+        categoryAdapter = CategoryAdapter(getCategory) { category ->
+            val intent = Intent(this, CategoryDetailActivity::class.java).apply {
+                putExtra("category", category)
+            }
+            startActivity(intent)
+        }
 
+        binding.categoryRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.categoryRecyclerView.adapter = categoryAdapter
 
-        val clickHere = findViewById<TextView>(R.id.clickHere)
-        clickHere.setOnClickListener {
-            val go = Intent (this, ItemDetail::class.java)
-            startActivity(go)
+        setupNavigation()
+    }
+
+    private fun setupNavigation() {
+        binding.home.setOnClickListener {
+            navigateTo(HomeActivity::class.java)
         }
 
-        val home = findViewById<LinearLayout>(R.id.home)
-        home.setOnClickListener {
-            val go = Intent (this, HomeActivity::class.java)
-            startActivity(go)
+        binding.requests.setOnClickListener {
+            navigateTo(RequestsActivity::class.java)
         }
 
-        val requests = findViewById<LinearLayout>(R.id.requests)
-        requests.setOnClickListener {
-            val go = Intent (this, RequestsActivity::class.java)
-            startActivity(go)
+        binding.chat.setOnClickListener {
+            navigateTo(ChatActivity::class.java)
         }
 
-        val chats = findViewById<LinearLayout>(R.id.chat)
-        chats.setOnClickListener {
-            val go = Intent (this, ChatActivity::class.java)
-            startActivity(go)
+        binding.account.setOnClickListener {
+            navigateTo(Profile::class.java)
         }
 
-        val account = findViewById<LinearLayout>(R.id.account)
-        account.setOnClickListener {
-            val go = Intent (this, Profile::class.java)
-            startActivity(go)
+        binding.add.setOnClickListener {
+            navigateTo(AddActivity::class.java)
         }
+    }
+
+    private fun navigateTo(activityClass: Class<*>) {
+        val intent = Intent(this, activityClass)
+        startActivity(intent)
     }
 }

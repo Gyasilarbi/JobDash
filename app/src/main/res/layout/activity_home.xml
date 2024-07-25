@@ -495,7 +495,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="14dp"
                 android:layout_marginEnd="16dp"
                 android:orientation="horizontal">
 
@@ -509,14 +509,6 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/clickHere"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="click here"
-                android:textStyle="bold"/>
-
 
             <LinearLayout
                 android:layout_width="match_parent"

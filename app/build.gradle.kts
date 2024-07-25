@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -20,6 +21,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     buildTypes {
@@ -31,6 +33,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -41,7 +44,6 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -50,41 +52,59 @@ dependencies {
     implementation("androidx.activity:activity:1.8.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.google.firebase:firebase-database:21.0.0")
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    implementation ("io.getstream:stream-chat-android-ui-components:6.0.2")
-    implementation ("io.getstream:stream-chat-android-offline:6.0.2")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation ("com.google.android.material:material:1.9.0")
-    implementation ("androidx.activity:activity-ktx:1.7.2")
-    implementation ("io.coil-kt:coil:2.4.0")
+    implementation("io.getstream:stream-chat-android-ui-components:6.0.2")
+    implementation("io.getstream:stream-chat-android-offline:6.0.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("androidx.activity:activity-ktx:1.7.2")
+    implementation("io.coil-kt:coil:2.4.0")
 
-    //firebase
+    // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.android.gms:play-services-auth:21.2.0")
-    implementation ("com.firebaseui:firebase-ui-auth:7.2.0")
+    implementation("com.firebaseui:firebase-ui-auth:7.2.0")
 
     val nav_version = "2.7.7"
 
-    // Java language implementation
+    // Navigation
     implementation("androidx.navigation:navigation-fragment:$nav_version")
     implementation("androidx.navigation:navigation-ui:$nav_version")
-
-    // Kotlin
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
-
-    // Feature module Support
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
-
-    // Testing Navigation
     androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
-
-    // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+
+    // ...
+
+    // Google Maps SDK -- these are here for the data model.  Remove these dependencies and replace
+    // with the compose versions.
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    // KTX for the Maps SDK for Android library
+    implementation("com.google.maps.android:maps-ktx:5.0.0")
+    // KTX for the Maps SDK for Android Utility Library
+    implementation("com.google.maps.android:maps-utils-ktx:5.0.0")
+
+    // Google Maps Compose library
+    val mapsComposeVersion = "4.4.1"
+    implementation("com.google.maps.android:maps-compose:$mapsComposeVersion")
+    // Google Maps Compose utility library
+    implementation("com.google.maps.android:maps-compose-utils:$mapsComposeVersion")
+    // Google Maps Compose widgets library
+    implementation("com.google.maps.android:maps-compose-widgets:$mapsComposeVersion")
+
 }
 
+secrets {
+    // Optionally specify a different file name containing your secrets.
+    // The plugin defaults to "local.properties"
+    propertiesFileName = "secrets.properties"
+
+}

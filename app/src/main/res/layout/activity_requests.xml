@@ -1143,9 +1143,7 @@
                         android:text="Account"
                         android:textStyle="bold" />
                 </LinearLayout>
-
             </LinearLayout>
-
         </com.google.android.material.bottomappbar.BottomAppBar>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

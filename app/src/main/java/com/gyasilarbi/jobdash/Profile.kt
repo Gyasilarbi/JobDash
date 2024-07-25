@@ -72,6 +72,12 @@ class Profile : AppCompatActivity() {
             val go = Intent(this, Profile::class.java)
             startActivity(go)
         }
+
+        val add = binding.addd
+        add.setOnClickListener {
+            val go = Intent(this, AddActivity::class.java)
+            startActivity(go)
+        }
     }
 
     private fun clearLocalSessionData() {

@@ -42,6 +42,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="name_header" parent="Base.Theme.JobDash">
+        <item name="android:textColor">@color/app_theme_secondary</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
     <style name="roundedImageView" parent="Widget.MaterialComponents.ShapeableImageView">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">20dp</item>

@@ -1,34 +1,26 @@
 package com.gyasilarbi.jobdash
 
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
-import com.gyasilarbi.jobdash.databinding.ActivityRequestsBinding // Updated to match your layout file name
+import com.gyasilarbi.jobdash.databinding.ActivityAddBinding
 
-class RequestsActivity : AppCompatActivity() {
-
-    // Use the correct type for view binding
-    private lateinit var binding: ActivityRequestsBinding
-    private lateinit var adapter: Tab2Adapter
+class AddActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAddBinding
+    private lateinit var adapter: TabAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Initialize view binding
-        binding = ActivityRequestsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding =  ActivityAddBinding.inflate(layoutInflater)
+        setContentView(binding.root )
 
-        // Handle the back button click
-        val backButton: ImageView = binding.backButtonImage
-        backButton.setOnClickListener {
-            onBackPressed()
-        }
-
-        adapter = Tab2Adapter(supportFragmentManager, lifecycle)
+        adapter = TabAdapter(supportFragmentManager, lifecycle)
         binding.viewPager2.adapter = adapter
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -47,5 +39,6 @@ class RequestsActivity : AppCompatActivity() {
                 binding.tabLayout.selectTab(binding.tabLayout.getTabAt(position))
             }
         })
+
     }
 }

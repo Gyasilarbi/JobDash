@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile">
+    tools:context=".ProfileActivity">
 
     <LinearLayout
         android:id="@+id/back_button"
@@ -44,7 +44,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,33 +61,25 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center"
                     android:padding="8dp">
 
                     <TextView
+                        android:id="@+id/username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Collins Gyasi Larbi"
+                        android:text=""
                         android:textColor="@color/app_theme_darker"
                         android:textSize="24sp"
                         android:textStyle="bold|italic"/>
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Software developer"
-                        android:textColor="@color/app_theme_darker"
-                        android:textSize="16sp"/>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#808080"
                         android:layout_marginTop="16dp"/>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -105,7 +97,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:layout_marginTop="8dp">
 
@@ -116,9 +108,10 @@
                                 app:tint="@color/gray"/>
 
                             <TextView
+                                android:id="@+id/email"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="gyasilarbi459@gmail.com"
+                                android:text=""
                                 android:textColor="@color/gray"
                                 android:textSize="16sp"
                                 android:layout_marginStart="8dp"/>
@@ -127,7 +120,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:layout_marginTop="8dp">
 
@@ -138,9 +131,10 @@
                                 app:tint="@color/gray"/>
 
                             <TextView
+                                android:id="@+id/phone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="(233) 24 300 9448"
+                                android:text=""
                                 android:textColor="@color/gray"
                                 android:textSize="16sp"
                                 android:layout_marginStart="8dp"/>
@@ -148,7 +142,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:layout_marginTop="8dp">
 
@@ -159,121 +153,13 @@
                                 app:tint="@color/gray"/>
 
                             <TextView
+                                android:id="@+id/city"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="AW18 Winnepeg Street, Alico - Kasoa, Ghana."
+                                android:text=""
                                 android:textColor="@color/gray"
                                 android:textSize="16sp"
                                 android:layout_marginStart="8dp"/>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#808080"
-                        android:layout_marginTop="16dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Payment Account Details"
-                            android:textColor="@color/app_theme_secondary"
-                            android:textSize="16sp"
-                            android:textStyle="bold|italic"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="8dp">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/baseline_person_24"
-                                app:tint="@color/gray"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Collins Gyasi Larbi"
-                                android:textColor="@color/gray"
-                                android:textSize="16sp"
-                                android:layout_marginStart="8dp"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="8dp">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/baseline_bank"
-                                app:tint="@color/gray"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Fidelity Bank"
-                                android:textColor="@color/gray"
-                                android:textSize="16sp"
-                                android:layout_marginStart="8dp"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="8dp">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/baseline_credit_card_24"
-                                app:tint="@color/gray"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="4123 6626 2312 7741"
-                                android:textColor="@color/gray"
-                                android:textSize="16sp"
-                                android:layout_marginStart="8dp"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="8dp">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/baseline_account_balance_wallet_24"
-                                app:tint="@color/gray"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="(233) 24 300 9448"
-                                android:textColor="@color/gray"
-                                android:textSize="16sp"
-                                android:layout_marginStart="8dp"/>
-
                         </LinearLayout>
                     </LinearLayout>
 
@@ -305,160 +191,4 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_gravity="bottom"
-            android:backgroundTint="#f8f8f8"
-            android:padding="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/home"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imageView10"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/home"
-                        app:tint="@color/app_theme_secondary" />
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        style="@style/nav_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Home"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/requests"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imageView11"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/baseline_bookmark_border_24"
-                        app:tint="@color/app_theme_secondary" />
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        style="@style/nav_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Requests"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/addd"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imageView12"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/add"
-                        app:tint="@color/app_theme_secondary" />
-
-                    <TextView
-                        android:id="@+id/textView7"
-                        style="@style/nav_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Add"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/chat"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imageView13"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/chat"
-                        app:tint="@color/app_theme_secondary" />
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/nav_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Chat"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/account"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imageView14"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/person"
-                        app:tint="@color/app_theme_secondary" />
-
-                    <TextView
-                        android:id="@+id/textView9"
-                        style="@style/nav_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Account"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.bottomappbar.BottomAppBar>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

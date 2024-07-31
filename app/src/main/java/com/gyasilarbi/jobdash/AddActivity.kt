@@ -3,10 +3,9 @@ package com.gyasilarbi.jobdash
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import com.gyasilarbi.jobdash.adapter.TabAdapter
 import com.gyasilarbi.jobdash.databinding.ActivityAddBinding
 
 class AddActivity : AppCompatActivity() {

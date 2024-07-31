@@ -27,9 +27,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title"
+                    android:textColor="@color/app_theme_darkAlt"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/app_theme_darkAlt"/>
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -44,9 +44,9 @@
                         android:hint="Job title"
                         android:imeOptions="actionDone"
                         android:inputType="textCapCharacters"
-                        android:maxLength="5"
+                        android:maxLength="50"
                         android:maxLines="1"
-                        android:textAllCaps="true"/>
+                        android:textAllCaps="true" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -61,16 +61,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Category"
+                    android:textColor="@color/app_theme_darkAlt"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/app_theme_darkAlt"/>
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/categoryEt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
+            <!-- Description Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,9 +82,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Description"
+                    android:textColor="@color/app_theme_darkAlt"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/app_theme_darkAlt"/>
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -92,17 +93,18 @@
                     app:hintTextAppearance="@style/register_header">
 
                     <EditText
-                        android:id="@+id/editText_description"
+                        android:id="@+id/inputDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="top"
                         android:hint="Describe your service offer."
                         android:inputType="textMultiLine"
                         android:minHeight="150dp"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
+            <!-- Pictures Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -113,48 +115,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pictures / Images (Optional)"
+                    android:textColor="@color/app_theme_darkAlt"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/app_theme_darkAlt"/>
+                    android:textStyle="bold" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
+                    android:id="@+id/bottomLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:errorTextAppearance="@style/headers"
-                    app:hintTextAppearance="@style/register_header">
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:id="@+id/linearLayout_pictures_buttons"
-                        android:layout_width="match_parent"
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:contentDescription="image_desc"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/outline_image_24" />
 
-                        <Button
-                            android:id="@+id/button_from_gallery"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:drawableEnd="@drawable/ic_gallery"
-                            android:text="From Gallery"
-                            android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/button_from_gallery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Select Image from gallery..."
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
 
-                        <!-- Spacer to create 8dp space between buttons -->
-                        <View
-                            android:layout_width="8dp"
-                            android:layout_height="wrap_content" />
 
-                        <Button
-                            android:id="@+id/button_take_photo"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:drawableEnd="@drawable/ic_camera"
-                            android:text="Take a Photo"
-                            android:textColor="@color/black" />
-                    </LinearLayout>
-                </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
             </LinearLayout>
 
+            <!-- Amount Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -165,9 +159,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Amount"
+                    android:textColor="@color/app_theme_darkAlt"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/app_theme_darkAlt"/>
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -179,22 +173,21 @@
                         android:id="@+id/inputAmount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="GH₵"
-                        android:textStyle="bold"
                         android:imeOptions="actionDone"
-                        android:inputType="textCapCharacters"
+                        android:inputType="numberDecimal"
                         android:maxLines="1"
-                        android:textAllCaps="true"/>
+                        android:text="GH₵" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingStart="12dp"
                     android:text="How much are you charging for the service?"
-                    android:textStyle="italic"
-                    android:paddingStart="12dp"/>
+                    android:textStyle="italic" />
             </LinearLayout>
 
+            <!-- Time Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -205,9 +198,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Completion Time in Hours"
+                    android:textColor="@color/app_theme_darkAlt"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/app_theme_darkAlt"/>
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -221,20 +214,26 @@
                         android:layout_height="wrap_content"
                         android:hint="Time in Hours. eg: 3"
                         android:imeOptions="actionDone"
-                        android:inputType="textCapCharacters"
+                        android:inputType="number"
                         android:maxLength="5"
-                        android:maxLines="1"
-                        android:textAllCaps="true"/>
+                        android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="How much are you charging for the service?"
-                    android:textStyle="italic"
-                    android:paddingStart="12dp"/>
+                    android:paddingStart="12dp"
+                    android:text="How much time will it take to complete the service?"
+                    android:textStyle="italic" />
             </LinearLayout>
 
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/serviceStatusSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Active"/>
+
+            <!-- Location Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -245,30 +244,41 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Location"
+                    android:textColor="@color/app_theme_darkAlt"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/app_theme_darkAlt"/>
+                    android:textStyle="bold" />
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Customer must be present at my location."/>
+                    android:text="Customer must be present at my location." />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="To ensure accuracy of details, update your location here -"/>
+                    android:text="To ensure accuracy of details, update your location here -"
+                    android:textStyle="italic" />
 
                 <TextView
                     android:id="@+id/LocationSettings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Location settings"
-                    android:textSize="18sp"
                     android:textColor="@color/app_theme_primary"
-                    android:textStyle="bold"/>
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/locationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Location"
+                    android:textSize="22sp"
+                    android:textStyle="italic|bold" />
             </LinearLayout>
 
+            <!-- Add Service Button -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -276,13 +286,15 @@
                 android:padding="8dp">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/addService"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="Add Service Offer"
-                    android:textStyle="bold"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

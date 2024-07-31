@@ -4,12 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ExpandableListView
 import android.widget.ImageView
-import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.gyasilarbi.jobdash.databinding.ActivityProfileBinding
 
-class Profile : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
 
     private lateinit var expandableListView: ExpandableListView
     private lateinit var listAdapter: MyExpandableListAdapter
@@ -18,27 +22,29 @@ class Profile : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileBinding
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var mDbRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Initialize view binding
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize Firebase Authentication
+        // Initialize Firebase Authentication and DatabaseReference
         firebaseAuth = FirebaseAuth.getInstance()
+        mDbRef = FirebaseDatabase.getInstance().getReference("user")
 
-        // Handle the logout button click
+        // Load user data
+        loadUserData()
+
+        // Set OnClickListener for logout button
         binding.btnLogout.setOnClickListener {
-            firebaseAuth.signOut()
-            clearLocalSessionData() // Clear local session data if needed
+            showLogoutConfirmationDialog()
+        }
 
-            // Navigate back to login screen
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            finish()
+        // Handle the back button click
+        val backButton: ImageView = binding.backButtonImage
+        backButton.setOnClickListener {
+            onBackPressed()
         }
 
         // Initialize and set up the expandable list view
@@ -46,47 +52,71 @@ class Profile : AppCompatActivity() {
         prepareListData()
         listAdapter = MyExpandableListAdapter(this, listDataHeader, listDataChild)
         expandableListView.setAdapter(listAdapter)
+    }
 
-        // Handle the back button click
-        val backButton = binding.backButtonImage
-        backButton.setOnClickListener {
-            onBackPressed()
-        }
+    private fun loadUserData() {
+        val uid = firebaseAuth.currentUser?.uid
+        if (uid != null) {
+            mDbRef.child(uid).addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: com.google.firebase.database.DataSnapshot) {
+                    val user = snapshot.getValue(User::class.java)
+                    if (user != null) {
+                        // Populate UI with user data
+                        binding.username.text = user.name
+                        binding.email.text = user.email
+                        binding.phone.text = user.phone
+                        binding.city.text = user.city
+                    } else {
+                        Toast.makeText(this@ProfileActivity, "User data not found", Toast.LENGTH_SHORT).show()
+                    }
+                }
 
-        // Handle the home button click
-        val home = binding.home
-        home.setOnClickListener {
-            val go = Intent(this, HomeActivity::class.java)
-            startActivity(go)
-        }
-
-        val requests = binding.requests
-        requests.setOnClickListener {
-            val go = Intent (this, RequestsActivity::class.java)
-            startActivity(go)
-        }
-
-        // Handle the account button click
-        val account = binding.account
-        account.setOnClickListener {
-            val go = Intent(this, Profile::class.java)
-            startActivity(go)
-        }
-
-        val add = binding.addd
-        add.setOnClickListener {
-            val go = Intent(this, AddActivity::class.java)
-            startActivity(go)
+                override fun onCancelled(error: com.google.firebase.database.DatabaseError) {
+                    Toast.makeText(this@ProfileActivity, "Failed to load user data: ${error.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+        } else {
+            Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun clearLocalSessionData() {
-        // Clear shared preferences or any other local session data if needed
-        val sharedPref = getSharedPreferences("LoginPrefs", MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        editor.clear()
-        editor.apply()
+    private fun showLogoutConfirmationDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Logout")
+        builder.setMessage("Are you sure you want to logout?")
+        builder.setPositiveButton("Yes") { _, _ ->
+            performLogout()
+        }
+        builder.setNegativeButton("No", null)
+        builder.show()
     }
+
+    private fun performLogout() {
+        firebaseAuth.signOut()
+        Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show()
+
+        // Navigate to LoginActivity
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
+
+    data class User(
+        val name: String = "",
+        val email: String = "",
+        val uid: String = "",
+        val city: String = "",
+        val phone: String = "",
+        val banned: Boolean = false,
+        val id: String = "",
+        val image: String = "",
+        val invisible: Boolean = false,
+        val online: Boolean = false,
+        val role: String = "",
+        val totalUnreadCount: Int = 0,
+        val unreadChannels: Int = 0
+    )
 
     private fun prepareListData() {
         listDataHeader = mutableListOf("Services", "Our Policies", "Reports / Feedback")

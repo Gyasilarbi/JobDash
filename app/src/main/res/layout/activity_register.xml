@@ -52,12 +52,6 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:layout_marginEnd="30dp"-->
-<!--                android:src="@drawable/header" />-->
-
             <TextView
                 style="@style/register_header"
                 android:layout_width="wrap_content"
@@ -73,33 +67,18 @@
                 android:text="Connect with ..." />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lastName"
+                android:id="@+id/name"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:hint="Last Name"
+                android:hint="Full name (Last Name/First Name/Other Name(s))"
                 app:startIconDrawable="@drawable/baseline_person_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/firstName"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:hint="First Name(s)"
-                app:startIconDrawable="@drawable/baseline_person_24">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -114,7 +93,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -162,33 +141,14 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="phone"/>
+                    android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-<!--                <com.google.android.material.textfield.TextInputLayout-->
-<!--                    android:id="@+id/dateOfBirthLayout"-->
-<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:paddingEnd="10dp">-->
-
-<!--                    <com.google.android.material.textfield.TextInputEditText-->
-<!--                        android:id="@+id/idTVSelectedDate"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:drawableStart="@drawable/baseline_calendar_month_24"-->
-<!--                        android:focusable="false"-->
-<!--                        android:hint="Date of Birth"-->
-<!--                        android:inputType="date" />-->
-<!--                </com.google.android.material.textfield.TextInputLayout>-->
-
-                    <Spinner
-                        android:id="@+id/cityEt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
+            <Spinner
+                android:id="@+id/cityEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"/>
 
             <View
                 android:layout_width="wrap_content"

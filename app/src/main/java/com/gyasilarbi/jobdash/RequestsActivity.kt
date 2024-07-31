@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import com.gyasilarbi.jobdash.adapter.Tab2Adapter
 import com.gyasilarbi.jobdash.databinding.ActivityRequestsBinding // Updated to match your layout file name
 
 class RequestsActivity : AppCompatActivity() {

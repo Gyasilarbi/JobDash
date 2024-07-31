@@ -7,6 +7,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -15,17 +16,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.gyasilarbi.jobdash.adapter.RVServiceAdapter
 import com.gyasilarbi.jobdash.databinding.ActivityHomeBinding
+import com.gyasilarbi.jobdash.models.Services
 import java.util.Locale
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var regionCountryTextView: TextView
     private lateinit var addressStreetTextView: TextView
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
+
+    private lateinit var serviceList: ArrayList<Services>
+    private lateinit var firebaseRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,17 +43,17 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        categoryAdapter = CategoryAdapter(getCategory) { category ->
-            val intent = Intent(this, CategoryDetailActivity::class.java).apply {
-                putExtra("category", category)
-            }
-            startActivity(intent)
-        }
-
-        binding.categoryRecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.categoryRecyclerView.adapter = categoryAdapter
-
         setupNavigation()
+
+        firebaseRef = FirebaseDatabase.getInstance().getReference("Services")
+        serviceList = arrayListOf()
+
+        fetchData()
+
+        binding.serviceRecyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@HomeActivity)
+        }
 
         // Initialize TextViews
         regionCountryTextView = findViewById(R.id.regionCountryTextView)
@@ -67,6 +77,38 @@ class HomeActivity : AppCompatActivity() {
             getLocation()
         }
     }
+
+    private fun fetchData() {
+        firebaseRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                serviceList.clear()
+                if (snapshot.exists()) {
+                    for (serviceSnapshot in snapshot.children) {
+                        val service = serviceSnapshot.getValue(Services::class.java)
+                        service?.let { serviceList.add(it) }
+                    }
+                } else {
+                    Toast.makeText(this@HomeActivity, "No services found", Toast.LENGTH_SHORT).show()
+                }
+
+                // Define the onItemClicked callback
+                val onItemClicked: (Services) -> Unit = { service ->
+                    // Handle item click here
+                    Toast.makeText(this@HomeActivity, "Clicked on: ${service.serviceTitle}", Toast.LENGTH_SHORT).show()
+                }
+
+                // Pass the onItemClicked callback to the adapter
+                val rvAdapter = RVServiceAdapter(serviceList, onItemClicked)
+                binding.serviceRecyclerView.adapter = rvAdapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@HomeActivity, "Failed to fetch data: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
 
     private fun getLocation() {
         try {
@@ -112,13 +154,13 @@ class HomeActivity : AppCompatActivity() {
             navigateTo(AddActivity::class.java)
         }
 
-        binding.chat.setOnClickListener {
-            navigateTo(ChatActivity::class.java)
+        // HomeActivity.kt
+        binding.account.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
         }
 
-        binding.account.setOnClickListener {
-            navigateTo(Profile::class.java)
-        }
+
 
         binding.requests.setOnClickListener {
             navigateTo(RequestsActivity::class.java)

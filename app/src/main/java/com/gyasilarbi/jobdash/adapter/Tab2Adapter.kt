@@ -1,8 +1,11 @@
-package com.gyasilarbi.jobdash
+package com.gyasilarbi.jobdash.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.gyasilarbi.jobdash.CompletedRequestFragment
+import com.gyasilarbi.jobdash.InProgressRequestFragment
+import com.gyasilarbi.jobdash.NewRequestFragment
 
 class Tab2Adapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle){

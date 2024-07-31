@@ -11,11 +11,7 @@ import android.view.ViewGroup
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RequestFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class RequestFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null

@@ -49,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         // Save login info if "Remember Me" is checked
                         if (binding.rememberMeCheckbox.isChecked) {
-                            saveLoginInfo(email, password) // Save plain password
+                            saveLoginInfo(email) // Save plain password
                         } else {
                             clearLoginInfo()
                         }
@@ -74,22 +74,20 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun saveLoginInfo(email: String) {
+        val editor = sharedPref.edit()
+        editor.putString("email", email)
+        editor.apply()
+    }
+
     private fun checkSavedLoginInfo() {
         val savedEmail = sharedPref.getString("email", null)
-        val savedPassword = sharedPref.getString("password", null)
-        if (!savedEmail.isNullOrEmpty() && !savedPassword.isNullOrEmpty()) {
+        if (!savedEmail.isNullOrEmpty()) {
             binding.edtEmail.editText?.setText(savedEmail)
-            binding.edtPassword.editText?.setText(savedPassword)
             binding.rememberMeCheckbox.isChecked = true
         }
     }
 
-    private fun saveLoginInfo(email: String, password: String) {
-        val editor = sharedPref.edit()
-        editor.putString("email", email)
-        editor.putString("password", password) // Save plain password
-        editor.apply()
-    }
 
     private fun clearLoginInfo() {
         val editor = sharedPref.edit()

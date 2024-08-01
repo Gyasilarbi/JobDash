@@ -94,7 +94,7 @@ class HomeActivity : AppCompatActivity() {
                 // Define the onItemClicked callback
                 val onItemClicked: (Services) -> Unit = { service ->
                     // Handle item click here
-                    Toast.makeText(this@HomeActivity, "Clicked on: ${service.serviceTitle}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@HomeActivity, "Clicked on: ${service.title}", Toast.LENGTH_SHORT).show()
                 }
 
                 // Pass the onItemClicked callback to the adapter

@@ -86,10 +86,6 @@ dependencies {
     androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
-
-    // ...
-
-    // Google Maps SDK -- these are here for the data model.  Remove these dependencies and replace
     // with the compose versions.
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     // KTX for the Maps SDK for Android library
@@ -114,6 +110,13 @@ dependencies {
     kapt("androidx.room:room-compiler:2.5.0")
 
     implementation ("com.google.android.material:material:1.3.0")
+
+    implementation ("com.github.bumptech.glide:glide:4.15.1' // or latest version")
+    kapt ("com.github.bumptech.glide:compiler:4.15.1")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
+
 
 }
 

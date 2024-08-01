@@ -120,14 +120,13 @@ class OfferFragment<T> : Fragment() {
     }
 
     private fun saveDataService() {
-        val serviceTitle = binding.inputTitle.text.toString()
+        val title = binding.inputTitle.text.toString()
         val category = binding.categoryEt.selectedItem.toString()
         val description = binding.inputDescription.text.toString()
         val amount = binding.inputAmount.text.toString()
         val locationText = locationTextView.text.toString()
         val duration = binding.inputTime.text.toString()
         val userId = FirebaseAuth.getInstance().currentUser?.uid
-        val userName = FirebaseAuth.getInstance().currentUser?.displayName
 
         if (userId == null) {
             Toast.makeText(requireContext(), "User not logged in", Toast.LENGTH_SHORT).show()
@@ -145,7 +144,7 @@ class OfferFragment<T> : Fragment() {
 
         val service = mapOf(
             "serviceId" to serviceId,
-            "title" to serviceTitle,
+            "title" to title,
             "category" to category,
             "description" to description,
             "amount" to amount,
@@ -153,7 +152,6 @@ class OfferFragment<T> : Fragment() {
             "duration" to duration,
             "imageUri" to imageUri.toString(),
             "userId" to userId,
-            "userName" to userName,
             "status" to serviceStatus, // Save status
             "createdAt" to ServerValue.TIMESTAMP
         )

@@ -1,16 +1,18 @@
 package com.gyasilarbi.jobdash.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gyasilarbi.jobdash.R
+import com.gyasilarbi.jobdash.ServiceDetailActivity
 import com.gyasilarbi.jobdash.databinding.RvServiceItemBinding
-import com.gyasilarbi.jobdash.models.Services
+import com.gyasilarbi.jobdash.models.Service
 
 class RVServiceAdapter(
-    private val services: List<Services>,
-    private val onItemClicked: (Services) -> Unit
+    private val services: List<Service>,
+    private val onItemClicked: (Service) -> Unit
 ) : RecyclerView.Adapter<RVServiceAdapter.ServiceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder =
@@ -25,29 +27,44 @@ class RVServiceAdapter(
 
     override fun getItemCount() = services.size
 
-    inner class ServiceViewHolder(val binding: RvServiceItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ServiceViewHolder(private val binding: RvServiceItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    onItemClicked(services[position])
+                    val service = services[position]
+                    val context = binding.root.context
+                    val intent = Intent(context, ServiceDetailActivity::class.java)
+                    intent.putExtra("service", service)
+                    context.startActivity(intent)
                 }
             }
         }
 
-        fun bind(service: Services) {
+        fun bind(service: Service) {
             binding.apply {
                 title.text = service.title
-                servicePrice.text = service.amount
-                Glide.with(binding.root.context)
-                    .load(service.imageUri) // Make sure this is a valid URI or URL
-                    .placeholder(R.drawable.barber) // Optional placeholder
-                    .error(R.drawable.barber) // Optional error image
-                    .into(imageUri)
+                price.text = service.amount // Convert amount to String if needed
                 description.text = service.description
                 statusAns.text = if (service.status == 1) "Active" else "Inactive"
+
+                // Load image with Glide
+                val imageUrl = service.imageUrl
+                if (imageUrl != null) {
+                    if (imageUrl.isNotEmpty()) {
+                        Glide.with(binding.root.context)
+                            .load(imageUrl)
+                            .placeholder(R.drawable.barber) // Optional placeholder
+                            .error(R.drawable.barber) // Optional error image
+                            .into(serviceImage)
+                    } else {
+                        // Fallback image if no URI provided
+                        Glide.with(binding.root.context)
+                            .load(R.drawable.barber)
+                            .into(serviceImage)
+                    }
+                }
             }
         }
-
     }
 }

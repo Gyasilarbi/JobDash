@@ -57,4 +57,21 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">60dp</item>
     </style>
+
+    <style name="roundedServiceImage" parent="Widget.MaterialComponents.ShapeableImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="serviceDetailTitle" paent="Base.Theme.JobDash">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/app_theme_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="serviceDetailProvider" paent="Base.Theme.JobDash">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
 </resources>

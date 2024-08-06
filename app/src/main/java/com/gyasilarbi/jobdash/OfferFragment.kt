@@ -27,18 +27,17 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ServerValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.database.ServerValue
 import com.gyasilarbi.jobdash.databinding.FragmentOfferBinding
 import java.io.ByteArrayOutputStream
 import java.util.UUID
 
 private const val CURRENCY_SYMBOL = "GH₵ "
-private const val REQUEST_IMAGE_CAPTURE = 1
-private const val REQUEST_PICK_IMAGE = 2
-private const val REQUEST_LOCATION = 3
+private const val REQUEST_PICK_IMAGE = 1
+private const val REQUEST_LOCATION = 2
 
 class OfferFragment<T> : Fragment() {
 
@@ -102,6 +101,7 @@ class OfferFragment<T> : Fragment() {
         binding.LocationSettings.setOnClickListener {
             navigateToMapsActivity()
         }
+
         binding.addService.setOnClickListener {
             saveDataService()
         }
@@ -125,7 +125,7 @@ class OfferFragment<T> : Fragment() {
         val description = binding.inputDescription.text.toString()
         val amount = binding.inputAmount.text.toString()
         val locationText = locationTextView.text.toString()
-        val duration = binding.inputTime.text.toString()
+        val duration = "${binding.inputTime.text.toString()} days"
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
         if (userId == null) {
@@ -142,15 +142,33 @@ class OfferFragment<T> : Fragment() {
         val serviceStatus = if (serviceStatusSwitch.isChecked) 1 else 0 // 1 for active, 0 for inactive
         Log.d("OfferFragment", "Saving service with status: $serviceStatus")
 
+        uploadImageToStorage(imageUri!!, serviceId, title, category, description, amount, locationText, duration, userId, serviceStatus)
+    }
+
+    private fun uploadImageToStorage(uri: Uri, serviceId: String, title: String, category: String, description: String, amount: String, locationText: String, duration: String, userId: String, serviceStatus: Int) {
+        val imageRef = storageRef.child("images/$serviceId.jpg")
+
+        imageRef.putFile(uri)
+            .addOnSuccessListener {
+                imageRef.downloadUrl.addOnSuccessListener { downloadUrl ->
+                    saveServiceToDatabase(serviceId, title, category, description, amount, locationText, duration, downloadUrl.toString(), userId, serviceStatus)
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(requireContext(), "Failed to upload image", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun saveServiceToDatabase(serviceId: String, title: String, category: String, description: String, amount: String, location: String, duration: String, imageUrl: String, userId: String, serviceStatus: Int) {
         val service = mapOf(
             "serviceId" to serviceId,
             "title" to title,
             "category" to category,
             "description" to description,
             "amount" to amount,
-            "location" to locationText,
+            "location" to location,
             "duration" to duration,
-            "imageUri" to imageUri.toString(),
+            "imageUrl" to imageUrl,
             "userId" to userId,
             "status" to serviceStatus, // Save status
             "createdAt" to ServerValue.TIMESTAMP
@@ -174,7 +192,6 @@ class OfferFragment<T> : Fragment() {
                 Toast.makeText(requireContext(), "Failed to add service", Toast.LENGTH_SHORT).show()
             }
     }
-
 
     private fun setupCategorySpinner() {
         val categoryEt = binding.categoryEt
@@ -205,11 +222,6 @@ class OfferFragment<T> : Fragment() {
         startActivityForResult(intent, REQUEST_PICK_IMAGE)
     }
 
-    private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
-    }
-
     private fun navigateToMapsActivity() {
         val intent = Intent(requireContext(), MapsActivity::class.java)
         startActivityForResult(intent, REQUEST_LOCATION)
@@ -219,16 +231,6 @@ class OfferFragment<T> : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
-                REQUEST_IMAGE_CAPTURE -> {
-                    val imageBitmap = data?.extras?.get("data") as? Bitmap
-                    if (imageBitmap != null) {
-                        isCameraImage = true
-                        imageView.setImageBitmap(imageBitmap)
-                        uploadImageToStorage(imageBitmap)
-                    } else {
-                        Toast.makeText(requireContext(), "Failed to capture image", Toast.LENGTH_SHORT).show()
-                    }
-                }
                 REQUEST_PICK_IMAGE -> {
                     if (isCameraImage) {
                         Toast.makeText(requireContext(), "Image already taken with camera", Toast.LENGTH_SHORT).show()
@@ -259,31 +261,6 @@ class OfferFragment<T> : Fragment() {
             locationTextView.text = "Address: $address"
         } ?: run {
             locationTextView.text = "No location selected"
-        }
-    }
-
-    private fun uploadImageToStorage(bitmap: Bitmap) {
-        val imageRef = storageRef.child("images/${UUID.randomUUID()}.jpg")
-        val baos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val data = baos.toByteArray()
-
-        imageRef.putBytes(data)
-            .addOnSuccessListener {
-                imageRef.downloadUrl.addOnSuccessListener { uri ->
-                    imageUri = uri
-                    Toast.makeText(requireContext(), "Image uploaded successfully", Toast.LENGTH_SHORT).show()
-                }
-            }
-            .addOnFailureListener {
-                Toast.makeText(requireContext(), "Failed to upload image", Toast.LENGTH_SHORT).show()
-            }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_IMAGE_CAPTURE && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            openCamera()
         }
     }
 

@@ -11,7 +11,7 @@ import com.gyasilarbi.jobdash.databinding.RvServiceItemBinding
 import com.gyasilarbi.jobdash.models.Service
 
 class RVServiceAdapter(
-    private val services: List<Service>,
+    private val services: ArrayList<Service>,
     private val onItemClicked: (Service) -> Unit
 ) : RecyclerView.Adapter<RVServiceAdapter.ServiceViewHolder>() {
 

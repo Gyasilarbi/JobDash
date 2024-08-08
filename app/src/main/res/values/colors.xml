@@ -7,6 +7,7 @@
     <color name="hover_color">#E0E0E0</color>
     <color name="orange">#FF5722</color>
     <color name="green">#008000</color>
+    <color name="red">#FF0000</color>
 
 
     <color name="app_theme_primary">#0078d4</color>

@@ -125,7 +125,7 @@ class OfferFragment<T> : Fragment() {
         val description = binding.inputDescription.text.toString()
         val amount = binding.inputAmount.text.toString()
         val locationText = locationTextView.text.toString()
-        val duration = "${binding.inputTime.text.toString()} days"
+        val duration = "${binding.inputTime.text.toString()} hours"
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
         if (userId == null) {
